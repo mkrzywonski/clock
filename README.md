@@ -135,7 +135,7 @@ sudo systemctl enable --now clock.service
 systemctl status clock.service
 ```
 
-## 📶 Wi-Fi from the App
+## 📶 Wi-Fi Configuration from the App
 
 You probably configured Wi-Fi when you set up your Pi, but the menu can scan SSIDs and configure credentials on-device.
 
