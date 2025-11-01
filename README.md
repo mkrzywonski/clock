@@ -6,7 +6,7 @@ It syncs time via NTP, supports adjustable brightness, and includes an on-device
 ## ✨ Features
 
 - Accurate time from NTP
-- 4-digit HT16K33 LED display (14-segment supported; 7-segment modules work too)
+- 4-digit HT16K33 LED display (14-segment)
 - Smooth brightness control using a rotary encoder
 - On-device settings menu:
   - Wi-Fi SSID selection + password entry
@@ -30,21 +30,21 @@ It syncs time via NTP, supports adjustable brightness, and includes an on-device
 | Encoder Pin | Purpose                    | Pi GPIO (BCM) | Notes                              |
 |-------------|----------------------------|---------------|------------------------------------|
 | ENCA        | Encoder A                  | GPIO17        | Input w/ internal pull-up          |
-| ENCB        | Encoder B                  | GPIO27        | Input w/ internal pull-up          |
+| ENCB        | Encoder B                  | GPIO18        | Input w/ internal pull-up          |
 | COMA        | Encoder common             | GND           | Tie to Pi ground                    |
-| SW1         | Button 1                   | GPIO5         | Input w/ internal pull-up          |
-| SW2         | Button 2                   | GPIO6         | Input w/ internal pull-up          |
-| SW3         | Button 3                   | GPIO13        | Input w/ internal pull-up          |
-| SW4         | Button 4                   | GPIO19        | Input w/ internal pull-up          |
-| SW5         | Button 5 (center press)    | GPIO26        | Input w/ internal pull-up          |
+| SW1         | Button 1 (up)              | GPIO27        | Input w/ internal pull-up          |
+| SW2         | Button 2 (down)            | GPIO23        | Input w/ internal pull-up          |
+| SW3         | Button 3 (left)            | GPIO22        | Input w/ internal pull-up          |
+| SW4         | Button 4 (right)           | GPIO24        | Input w/ internal pull-up          |
+| SW5         | Button 5 (center press)    | GPIO4         | Input w/ internal pull-up          |
 | COMB        | Buttons common             | GND           | Tie to Pi ground                    |
 
 **I²C display**
 
-| Display Pin | Purpose     | Pi Header |
-|-------------|-------------|-----------|
-| VCC         | 3.3 V       | 3V3       |
-| GND         | Ground      | GND       |
+| Display Pin | Purpose     | Pi Header   |
+|-------------|-------------|-------------|
+| VCC         | 3.3 V       | 3V3         |
+| GND         | Ground      | GND         |
 | SDA         | I²C data    | GPIO2 (SDA) |
 | SCL         | I²C clock   | GPIO3 (SCL) |
 
@@ -91,31 +91,14 @@ If your display is on a different bus or address, adjust in the code (e.g., `bus
 
 - **Default state:** Clock display (updates once per second)
 - **Rotate encoder:** Adjust brightness in Clock state
-- **Button press (center or SW*):** Enter/cycle menu
+  - Button press (center) → save setting
+- **Button press (left/right):** Enter/cycle menu
   - **Wi-Fi SSID** → choose network
-  - **Wi-Fi password** → enter using buttons/rotation
+    - **Wi-Fi password** → enter using buttons/rotation
   - **12/24-hour** → toggle
   - **Timezone** → choose from curated list
   - **Colon flash** → toggle
-
-A brief **boot message** appears at power-on once the display is initialized.
-
-## 🔧 Configuration
-
-Typical runtime settings are stored internally by the app (menu-driven). If you prefer file-based configuration, you can add a simple `config.json` like:
-
-```json
-{
-  "brightness": 8,
-  "hour_mode_24h": true,
-  "timezone": "America/Chicago",
-  "colon_flash": true,
-  "i2c_bus": 1,
-  "i2c_address": "0x70"
-}
-```
-
-Point the app to it (e.g., `--config config.json`) if supported by your CLI.
+  - **Display IP Address**
 
 ## 🧪 Developer Notes
 
@@ -136,9 +119,9 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=mike
-WorkingDirectory=/home/mike/clock
-ExecStart=/home/mike/clock/venv/bin/python /home/mike/clock/clock.py
+User=pi
+WorkingDirectory=/home/pi/clock
+ExecStart=/home/pi/clock/venv/bin/python /home/pi/clock/clock.py
 Restart=on-failure
 Environment=PYTHONUNBUFFERED=1
 
@@ -186,31 +169,8 @@ sudo nmcli dev wifi connect "YOUR_SSID" password "YOUR_PASSWORD"
     ```
     Log out/in.
 
-## 📁 Project Layout
-
-```
-clock/
-├─ clock.py               # main application / state machine
-├─ display.py             # HT16K33 Display class (init, map, scroll)
-├─ encoder.py             # rotary encoder & buttons handling
-├─ requirements.txt
-├─ README.md
-└─ .gitignore
-```
-
-*(File names may vary; adjust to your repo.)*
-
-## 🗺️ Roadmap
-
-- Fine-grained timezone picker with city search
-- On-device keyboard improvements for faster password entry
-- Smooth brightness via PWM
-- Optional NTP server selection & diagnostics screen
-
 ## 🧾 License
 
-MIT (or your preferred license)
+GNU GENERAL PUBLIC LICENSE (GPLv3)
 
-## 🙌 Contributing
 
-PRs welcome. Please open an issue with hardware details (Pi model, display address, wiring) and logs if you hit problems.
