@@ -1,0 +1,37 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+build/
+dist/
+
+# --- Virtual Environment ---
+venv/
+.env/
+.venv/
+.envrc
+.python-version
+
+# --- Local Config / Settings ---
+clock_settings.json
+config.json
+*.local.json
+
+# --- Logs / Output ---
+*.log
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# --- IDE / Editor files ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- OS Files ---
+.DS_Store
+Thumbs.db
