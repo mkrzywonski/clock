@@ -17,7 +17,7 @@ It syncs time via NTP, supports adjustable brightness, and includes an on-device
 - Clean Python structure (Display class, input handlers, state machine)
 
 ## 📷 Photos
-![Clock exterior](outside.png)
+![Clock exterior](outside2.png)
 ![Clock interior](inside.png)
 
 ## 🧰 Hardware
