@@ -16,6 +16,10 @@ It syncs time via NTP, supports adjustable brightness, and includes an on-device
 - Auto-start at boot via systemd
 - Clean Python structure (Display class, input handlers, state machine)
 
+## 📷 Photos
+![Clock exterior](outside.png)
+![Clock interior](inside.png)
+
 ## 🧰 Hardware
 
 - **Raspberry Pi Zero 2 W** (other Pis likely work)
