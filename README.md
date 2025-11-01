@@ -138,6 +138,7 @@ systemctl status clock.service
 ## 📶 Wi-Fi from the App
 
 You probably configured Wi-Fi when you set up your Pi, but the menu can scan SSIDs and configure credentials on-device.
+
 **Instructions**
 - Select WiFi from the menu and press the center button.
 - The clock will scan for available networks. Use the up/down buttons to view SSIDs. Press the center button to select the desired SSID.
@@ -151,10 +152,10 @@ You probably configured Wi-Fi when you set up your Pi, but the menu can scan SSI
   - The clock will display "GOOD" if the SSID and password were valid. The credntials will be saved.
   - The clock will display "FAIL" if the SSID and password were not vailid. Try again.
  
-**Note**
+**Note:**
 Not all typable characters can be unambiguously displayed on a 14 segment LED display. While accepting characters in the password entry routine, all four digits of the display will be used to identify the exact character being entered. The first three leftmost digits are used to indicate upper/lower case, symobols, etc. The rightmost digit will attemot to display the actual character.
 
-For example, 1, l, i, ! and | are all displayed the same on a 14-segment display. While entering the Wi-Fi password, '1' will be shown as "N  1" to indicate that it is a (N)umeral 1. 'l' will be displayed as "↓L l" indicating that it is a lower case L. 'i' will be displayed as "↓I i". '!' will be displayed as "↑1 !", indicating the symbol typed by pressing Shift-1 on a keyboard. And '|' will be displayed as "PIP|" indicating a pipe character. Colon and semicolon are displayed as "COL:" and "SCL;" respectively. All these characters look similar on a 14-segment display digit.
+For example, 1, l, i, !, |, ;, and : are all displayed the same on the 14-segment display. While entering the Wi-Fi password, '1' will be shown as "N  1" to indicate that it is a (N)umeral 1. 'l' will be displayed as "↓L l" indicating that it is a lower case L. 'i' will be displayed as "↓I i". '!' will be displayed as "↑1 !", indicating the symbol typed by pressing Shift-1 on a keyboard. And '|' will be displayed as "PIP|" indicating a pipe character. Colon and semicolon are displayed as "COL:" and "SCL;" respectively. All these characters look similar on a single 14-segment display digit. Use the 3 leftmost digits to tell these characters apart.
 
 TLDR: The character displayed on the rightmost digit will be the closest possible 14-segment representation of the character you are entering. The Leftmost 3 digits will idicate uper/lower case or other symbols to disambiguate similarly displayed characters.
 
