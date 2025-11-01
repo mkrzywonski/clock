@@ -1,0 +1,8 @@
+colorzero==2.0
+gpiozero==2.0.1
+pigpio==1.78
+pytz==2025.2
+RPi.GPIO==0.7.1
+setuptools==80.9.0
+smbus2==0.5.0
+wheel==0.45.1
