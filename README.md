@@ -105,13 +105,6 @@ If your display is on a different bus or address, adjust in the code (e.g., `bus
   - **Colon flash** → toggle
   - **Display IP Address**
 
-## 🧪 Developer Notes
-
-- **Display class:** wraps HT16K33 I²C operations (init, brightness, text mapping, scrolling)
-- **Character mapping:** 14-segment map supports digits and a subset of ASCII; custom glyphs (e.g., arrows) are added as bitmasks
-- **State machine:** `clock`, `menu/ssid`, `menu/password`, `menu/12-24`, `menu/timezone`, `menu/colon`
-- **Input:** encoder rotation (quadrature) + five buttons, debounced in software via `gpiozero`
-
 ## 🧷 Systemd (run at boot)
 
 Create `/etc/systemd/system/clock.service`:
