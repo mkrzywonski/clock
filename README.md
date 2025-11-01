@@ -24,8 +24,10 @@ It syncs time via NTP, supports adjustable brightness, and includes an on-device
 
 - **Raspberry Pi Zero 2 W** (other Pis likely work)
 - **HT16K33 LED display** (I²C; 0x70 default address)
+  https://www.amazon.com/dp/B0C1C5W7V6
 - **Adafruit ANO Rotary Navigation Encoder Breakout (PID 6311)**  
   – 2 quadrature pins for rotation, 5 momentary buttons, separate commons
+  https://www.adafruit.com/product/6311
 - **3D Printed Case** https://www.tinkercad.com/things/d59hjFyJgNW-clock
 
 > Power and logic are 3.3 V. Use internal pull-ups on the Pi GPIO and tie the board’s commons to **GND**.
