@@ -552,6 +552,7 @@ if __name__ == "__main__":
     disp = Display(bus=1, address=0x70, brightness=settings.brightness, scroll_delay=0.5)
     state = "clock"
     menu_items = ["FLASH", "24H", "ZONE", "WIFI", "IP"]
+    save_time = 0
 
     try:
         while True:
@@ -563,11 +564,18 @@ if __name__ == "__main__":
                     if input == '+' or input == 'up':
                         settings.increase_brightness()
                         disp.set_brightness(settings.brightness)
+                        save_time = 10
                     elif input == '-' or input == 'down':
                         settings.decrease_brightness()
                         disp.set_brightness(settings.brightness)
+                        save_time = 10
                     elif input == '\n':
-                        settings.save()
+                        if settings.brightness > 0:
+                            settings.brightness = 0
+                        else:
+                            settings.brightness = 15
+                        disp.set_brightness(settings.brightness)
+                        save_time = 10
                     elif input == 'right' or input == 'left':
                         state = "menu"
             
@@ -607,6 +615,10 @@ if __name__ == "__main__":
                     else:
                         state = "clock"
                         break
+                if save_time > 0:
+                    save_time -= 1
+                    id save_time == 0:
+                        settings.save()
                 now = time.time()
                 sleep_time = 1 - (now % 1)
                 time.sleep(sleep_time)                        
