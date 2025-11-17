@@ -137,7 +137,7 @@ sudo systemctl enable --now clock.service
 systemctl status clock.service
 ```
 
-## 📶 Wi-Fi Configuration from the App
+## 📶 Wi-Fi Configuration from the button pad
 
 You probably configured Wi-Fi when you set up your Pi, but the menu can also scan SSIDs and configure credentials on-device without the need to connect a monitor and keyboard. This can be helpful if you move the clock to a location with a different Wi-Fi network.
 
